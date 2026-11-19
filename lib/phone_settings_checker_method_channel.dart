@@ -18,7 +18,8 @@ class MethodChannelPhoneSettingsChecker extends PhoneSettingsCheckerPlatform {
   Future<bool> isAutoTimeZoneEnabled() => _readBool('isAutoTimeZoneEnabled');
 
   @override
-  Future<bool> isDeveloperOptionsEnabled() => _readBool('isDeveloperOptionsEnabled');
+  Future<bool> isDeveloperOptionsEnabled() =>
+      _readBool('isDeveloperOptionsEnabled');
 
   @override
   Future<bool> isUsbDebuggingEnabled() => _readBool('isUsbDebuggingEnabled');
@@ -29,7 +30,8 @@ class MethodChannelPhoneSettingsChecker extends PhoneSettingsCheckerPlatform {
   @override
   Future<PhoneSettings> getAll() async {
     _ensureSupported('getAll');
-    final map = await methodChannel.invokeMapMethod<String, bool>('getAll') ?? const {};
+    final map =
+        await methodChannel.invokeMapMethod<String, bool>('getAll') ?? const {};
     // A missing name counts as OFF, the same as the single checks.
     return PhoneSettings(
       isAutoTimeEnabled: map['isAutoTimeEnabled'] ?? false,

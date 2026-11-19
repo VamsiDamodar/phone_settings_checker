@@ -18,15 +18,20 @@ void main() {
   };
 
   for (final check in checks.entries) {
-    test('${check.key} throws UnimplementedError until a platform implements it', () {
-      expect(
-        check.value,
-        throwsA(isA<UnimplementedError>().having(
-          (e) => e.message,
-          'message',
-          contains(check.key),
-        )),
-      );
-    });
+    test(
+      '${check.key} throws UnimplementedError until a platform implements it',
+      () {
+        expect(
+          check.value,
+          throwsA(
+            isA<UnimplementedError>().having(
+              (e) => e.message,
+              'message',
+              contains(check.key),
+            ),
+          ),
+        );
+      },
+    );
   }
 }

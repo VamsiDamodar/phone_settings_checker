@@ -7,7 +7,8 @@ import 'package:phone_settings_checker/phone_settings_checker_method_channel.dar
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  MethodChannelPhoneSettingsChecker platform = MethodChannelPhoneSettingsChecker();
+  MethodChannelPhoneSettingsChecker platform =
+      MethodChannelPhoneSettingsChecker();
   const MethodChannel channel = MethodChannel('phone_settings_checker');
 
   /// What the fake Kotlin side sends back for `isAutoTimeEnabled`.
@@ -45,35 +46,34 @@ void main() {
       'isAirplaneModeEnabled': true,
     };
     receivedMethods.clear();
-    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.setMockMethodCallHandler(
-      channel,
-      (MethodCall methodCall) async {
-        receivedMethods.add(methodCall.method);
-        if (methodCall.method == 'isAutoTimeEnabled') {
-          return autoTimeAnswer;
-        }
-        if (methodCall.method == 'isAutoTimeZoneEnabled') {
-          return autoTimeZoneAnswer;
-        }
-        if (methodCall.method == 'isDeveloperOptionsEnabled') {
-          return developerOptionsAnswer;
-        }
-        if (methodCall.method == 'isUsbDebuggingEnabled') {
-          return usbDebuggingAnswer;
-        }
-        if (methodCall.method == 'isAirplaneModeEnabled') {
-          return airplaneModeAnswer;
-        }
-        if (methodCall.method == 'getAll') {
-          return getAllAnswer;
-        }
-        return null;
-      },
-    );
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(channel, (MethodCall methodCall) async {
+          receivedMethods.add(methodCall.method);
+          if (methodCall.method == 'isAutoTimeEnabled') {
+            return autoTimeAnswer;
+          }
+          if (methodCall.method == 'isAutoTimeZoneEnabled') {
+            return autoTimeZoneAnswer;
+          }
+          if (methodCall.method == 'isDeveloperOptionsEnabled') {
+            return developerOptionsAnswer;
+          }
+          if (methodCall.method == 'isUsbDebuggingEnabled') {
+            return usbDebuggingAnswer;
+          }
+          if (methodCall.method == 'isAirplaneModeEnabled') {
+            return airplaneModeAnswer;
+          }
+          if (methodCall.method == 'getAll') {
+            return getAllAnswer;
+          }
+          return null;
+        });
   });
 
   tearDown(() {
-    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.setMockMethodCallHandler(channel, null);
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(channel, null);
   });
 
   test('isAutoTimeEnabled returns true when Kotlin says ON', () async {
@@ -86,10 +86,13 @@ void main() {
     expect(await platform.isAutoTimeEnabled(), isFalse);
   });
 
-  test('isAutoTimeEnabled falls back to false when Kotlin sends null', () async {
-    autoTimeAnswer = null;
-    expect(await platform.isAutoTimeEnabled(), isFalse);
-  });
+  test(
+    'isAutoTimeEnabled falls back to false when Kotlin sends null',
+    () async {
+      autoTimeAnswer = null;
+      expect(await platform.isAutoTimeEnabled(), isFalse);
+    },
+  );
 
   test('isAutoTimeEnabled calls Kotlin with the exact method name', () async {
     await platform.isAutoTimeEnabled();
@@ -106,35 +109,50 @@ void main() {
     expect(await platform.isAutoTimeZoneEnabled(), isFalse);
   });
 
-  test('isAutoTimeZoneEnabled falls back to false when Kotlin sends null', () async {
-    autoTimeZoneAnswer = null;
-    expect(await platform.isAutoTimeZoneEnabled(), isFalse);
-  });
+  test(
+    'isAutoTimeZoneEnabled falls back to false when Kotlin sends null',
+    () async {
+      autoTimeZoneAnswer = null;
+      expect(await platform.isAutoTimeZoneEnabled(), isFalse);
+    },
+  );
 
-  test('isAutoTimeZoneEnabled calls Kotlin with the exact method name', () async {
-    await platform.isAutoTimeZoneEnabled();
-    expect(receivedMethods, ['isAutoTimeZoneEnabled']);
-  });
+  test(
+    'isAutoTimeZoneEnabled calls Kotlin with the exact method name',
+    () async {
+      await platform.isAutoTimeZoneEnabled();
+      expect(receivedMethods, ['isAutoTimeZoneEnabled']);
+    },
+  );
 
   test('isDeveloperOptionsEnabled returns true when Kotlin says ON', () async {
     developerOptionsAnswer = true;
     expect(await platform.isDeveloperOptionsEnabled(), isTrue);
   });
 
-  test('isDeveloperOptionsEnabled returns false when Kotlin says OFF', () async {
-    developerOptionsAnswer = false;
-    expect(await platform.isDeveloperOptionsEnabled(), isFalse);
-  });
+  test(
+    'isDeveloperOptionsEnabled returns false when Kotlin says OFF',
+    () async {
+      developerOptionsAnswer = false;
+      expect(await platform.isDeveloperOptionsEnabled(), isFalse);
+    },
+  );
 
-  test('isDeveloperOptionsEnabled falls back to false when Kotlin sends null', () async {
-    developerOptionsAnswer = null;
-    expect(await platform.isDeveloperOptionsEnabled(), isFalse);
-  });
+  test(
+    'isDeveloperOptionsEnabled falls back to false when Kotlin sends null',
+    () async {
+      developerOptionsAnswer = null;
+      expect(await platform.isDeveloperOptionsEnabled(), isFalse);
+    },
+  );
 
-  test('isDeveloperOptionsEnabled calls Kotlin with the exact method name', () async {
-    await platform.isDeveloperOptionsEnabled();
-    expect(receivedMethods, ['isDeveloperOptionsEnabled']);
-  });
+  test(
+    'isDeveloperOptionsEnabled calls Kotlin with the exact method name',
+    () async {
+      await platform.isDeveloperOptionsEnabled();
+      expect(receivedMethods, ['isDeveloperOptionsEnabled']);
+    },
+  );
 
   test('isUsbDebuggingEnabled returns true when Kotlin says ON', () async {
     usbDebuggingAnswer = true;
@@ -146,15 +164,21 @@ void main() {
     expect(await platform.isUsbDebuggingEnabled(), isFalse);
   });
 
-  test('isUsbDebuggingEnabled falls back to false when Kotlin sends null', () async {
-    usbDebuggingAnswer = null;
-    expect(await platform.isUsbDebuggingEnabled(), isFalse);
-  });
+  test(
+    'isUsbDebuggingEnabled falls back to false when Kotlin sends null',
+    () async {
+      usbDebuggingAnswer = null;
+      expect(await platform.isUsbDebuggingEnabled(), isFalse);
+    },
+  );
 
-  test('isUsbDebuggingEnabled calls Kotlin with the exact method name', () async {
-    await platform.isUsbDebuggingEnabled();
-    expect(receivedMethods, ['isUsbDebuggingEnabled']);
-  });
+  test(
+    'isUsbDebuggingEnabled calls Kotlin with the exact method name',
+    () async {
+      await platform.isUsbDebuggingEnabled();
+      expect(receivedMethods, ['isUsbDebuggingEnabled']);
+    },
+  );
 
   test('isAirplaneModeEnabled returns true when Kotlin says ON', () async {
     airplaneModeAnswer = true;
@@ -166,15 +190,21 @@ void main() {
     expect(await platform.isAirplaneModeEnabled(), isFalse);
   });
 
-  test('isAirplaneModeEnabled falls back to false when Kotlin sends null', () async {
-    airplaneModeAnswer = null;
-    expect(await platform.isAirplaneModeEnabled(), isFalse);
-  });
+  test(
+    'isAirplaneModeEnabled falls back to false when Kotlin sends null',
+    () async {
+      airplaneModeAnswer = null;
+      expect(await platform.isAirplaneModeEnabled(), isFalse);
+    },
+  );
 
-  test('isAirplaneModeEnabled calls Kotlin with the exact method name', () async {
-    await platform.isAirplaneModeEnabled();
-    expect(receivedMethods, ['isAirplaneModeEnabled']);
-  });
+  test(
+    'isAirplaneModeEnabled calls Kotlin with the exact method name',
+    () async {
+      await platform.isAirplaneModeEnabled();
+      expect(receivedMethods, ['isAirplaneModeEnabled']);
+    },
+  );
 
   test('getAll turns the Kotlin map into PhoneSettings', () async {
     getAllAnswer = {
@@ -235,26 +265,40 @@ void main() {
 
     test('every check throws UnsupportedError', () async {
       await expectLater(platform.isAutoTimeEnabled(), throwsUnsupportedError);
-      await expectLater(platform.isAutoTimeZoneEnabled(), throwsUnsupportedError);
-      await expectLater(platform.isDeveloperOptionsEnabled(), throwsUnsupportedError);
-      await expectLater(platform.isUsbDebuggingEnabled(), throwsUnsupportedError);
-      await expectLater(platform.isAirplaneModeEnabled(), throwsUnsupportedError);
+      await expectLater(
+        platform.isAutoTimeZoneEnabled(),
+        throwsUnsupportedError,
+      );
+      await expectLater(
+        platform.isDeveloperOptionsEnabled(),
+        throwsUnsupportedError,
+      );
+      await expectLater(
+        platform.isUsbDebuggingEnabled(),
+        throwsUnsupportedError,
+      );
+      await expectLater(
+        platform.isAirplaneModeEnabled(),
+        throwsUnsupportedError,
+      );
       await expectLater(platform.getAll(), throwsUnsupportedError);
     });
 
     test('the error says Android only and how to fix it', () async {
       await expectLater(
         platform.getAll(),
-        throwsA(isA<UnsupportedError>().having(
-          (e) => e.message,
-          'message',
-          allOf(
-            contains('only works on Android'),
-            contains('getAll()'),
-            contains('iOS'),
-            contains('isSupported'),
+        throwsA(
+          isA<UnsupportedError>().having(
+            (e) => e.message,
+            'message',
+            allOf(
+              contains('only works on Android'),
+              contains('getAll()'),
+              contains('iOS'),
+              contains('isSupported'),
+            ),
           ),
-        )),
+        ),
       );
     });
 

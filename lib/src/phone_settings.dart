@@ -41,15 +41,16 @@ class PhoneSettings {
 
   @override
   int get hashCode => Object.hash(
-        isAutoTimeEnabled,
-        isAutoTimeZoneEnabled,
-        isDeveloperOptionsEnabled,
-        isUsbDebuggingEnabled,
-        isAirplaneModeEnabled,
-      );
+    isAutoTimeEnabled,
+    isAutoTimeZoneEnabled,
+    isDeveloperOptionsEnabled,
+    isUsbDebuggingEnabled,
+    isAirplaneModeEnabled,
+  );
 
   @override
-  String toString() => 'PhoneSettings('
+  String toString() =>
+      'PhoneSettings('
       'isAutoTimeEnabled: $isAutoTimeEnabled, '
       'isAutoTimeZoneEnabled: $isAutoTimeZoneEnabled, '
       'isDeveloperOptionsEnabled: $isDeveloperOptionsEnabled, '

@@ -18,8 +18,8 @@ void main() {
     // Verify that the auto time row is on screen.
     expect(
       find.byWidgetPredicate(
-        (Widget widget) => widget is Text &&
-                           widget.data!.startsWith('Auto time:'),
+        (Widget widget) =>
+            widget is Text && widget.data!.startsWith('Auto time:'),
       ),
       findsOneWidget,
     );

@@ -56,22 +56,28 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
-        ),
+        appBar: AppBar(title: const Text('Plugin example app')),
         body: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Text('Auto time: ${_label(_settings?.isAutoTimeEnabled)}'),
               const SizedBox(height: 16),
-              Text('Auto timezone: ${_label(_settings?.isAutoTimeZoneEnabled)}'),
+              Text(
+                'Auto timezone: ${_label(_settings?.isAutoTimeZoneEnabled)}',
+              ),
               const SizedBox(height: 16),
-              Text('Developer options: ${_label(_settings?.isDeveloperOptionsEnabled)}'),
+              Text(
+                'Developer options: ${_label(_settings?.isDeveloperOptionsEnabled)}',
+              ),
               const SizedBox(height: 16),
-              Text('USB debugging: ${_label(_settings?.isUsbDebuggingEnabled)}'),
+              Text(
+                'USB debugging: ${_label(_settings?.isUsbDebuggingEnabled)}',
+              ),
               const SizedBox(height: 16),
-              Text('Airplane mode: ${_label(_settings?.isAirplaneModeEnabled)}'),
+              Text(
+                'Airplane mode: ${_label(_settings?.isAirplaneModeEnabled)}',
+              ),
               const SizedBox(height: 24),
               ElevatedButton.icon(
                 onPressed: _checkSettings,

@@ -9,7 +9,8 @@ abstract class PhoneSettingsCheckerPlatform extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static PhoneSettingsCheckerPlatform _instance = MethodChannelPhoneSettingsChecker();
+  static PhoneSettingsCheckerPlatform _instance =
+      MethodChannelPhoneSettingsChecker();
 
   /// The default instance of [PhoneSettingsCheckerPlatform] to use.
   ///
@@ -35,14 +36,18 @@ abstract class PhoneSettingsCheckerPlatform extends PlatformInterface {
   ///
   /// On Android this reads `Settings.Global.AUTO_TIME_ZONE`. No permission needed.
   Future<bool> isAutoTimeZoneEnabled() {
-    throw UnimplementedError('isAutoTimeZoneEnabled() has not been implemented.');
+    throw UnimplementedError(
+      'isAutoTimeZoneEnabled() has not been implemented.',
+    );
   }
 
   /// Returns `true` when the phone's "Developer options" are turned ON.
   ///
   /// On Android this reads `Settings.Global.DEVELOPMENT_SETTINGS_ENABLED`. No permission needed.
   Future<bool> isDeveloperOptionsEnabled() {
-    throw UnimplementedError('isDeveloperOptionsEnabled() has not been implemented.');
+    throw UnimplementedError(
+      'isDeveloperOptionsEnabled() has not been implemented.',
+    );
   }
 
   /// Returns `true` when the phone's "USB debugging" setting is ON.
@@ -50,14 +55,18 @@ abstract class PhoneSettingsCheckerPlatform extends PlatformInterface {
   /// On Android this reads `Settings.Global.ADB_ENABLED`. "Wireless debugging"
   /// is a separate switch and is not part of this check. No permission needed.
   Future<bool> isUsbDebuggingEnabled() {
-    throw UnimplementedError('isUsbDebuggingEnabled() has not been implemented.');
+    throw UnimplementedError(
+      'isUsbDebuggingEnabled() has not been implemented.',
+    );
   }
 
   /// Returns `true` when the phone's "Airplane mode" is ON.
   ///
   /// On Android this reads `Settings.Global.AIRPLANE_MODE_ON`. No permission needed.
   Future<bool> isAirplaneModeEnabled() {
-    throw UnimplementedError('isAirplaneModeEnabled() has not been implemented.');
+    throw UnimplementedError(
+      'isAirplaneModeEnabled() has not been implemented.',
+    );
   }
 
   /// Reads every setting in one call and returns them together.

@@ -8,7 +8,6 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 class MockPhoneSettingsCheckerPlatform
     with MockPlatformInterfaceMixin
     implements PhoneSettingsCheckerPlatform {
-
   @override
   Future<bool> isAutoTimeEnabled() => Future.value(true);
 
@@ -25,17 +24,20 @@ class MockPhoneSettingsCheckerPlatform
   Future<bool> isAirplaneModeEnabled() => Future.value(true);
 
   @override
-  Future<PhoneSettings> getAll() => Future.value(const PhoneSettings(
-        isAutoTimeEnabled: true,
-        isAutoTimeZoneEnabled: true,
-        isDeveloperOptionsEnabled: true,
-        isUsbDebuggingEnabled: true,
-        isAirplaneModeEnabled: true,
-      ));
+  Future<PhoneSettings> getAll() => Future.value(
+    const PhoneSettings(
+      isAutoTimeEnabled: true,
+      isAutoTimeZoneEnabled: true,
+      isDeveloperOptionsEnabled: true,
+      isUsbDebuggingEnabled: true,
+      isAirplaneModeEnabled: true,
+    ),
+  );
 }
 
 void main() {
-  final PhoneSettingsCheckerPlatform initialPlatform = PhoneSettingsCheckerPlatform.instance;
+  final PhoneSettingsCheckerPlatform initialPlatform =
+      PhoneSettingsCheckerPlatform.instance;
 
   test('$MethodChannelPhoneSettingsChecker is the default instance', () {
     expect(initialPlatform, isInstanceOf<MethodChannelPhoneSettingsChecker>());
@@ -43,7 +45,8 @@ void main() {
 
   test('isAutoTimeEnabled returns the platform answer', () async {
     PhoneSettingsChecker phoneSettingsCheckerPlugin = PhoneSettingsChecker();
-    MockPhoneSettingsCheckerPlatform fakePlatform = MockPhoneSettingsCheckerPlatform();
+    MockPhoneSettingsCheckerPlatform fakePlatform =
+        MockPhoneSettingsCheckerPlatform();
     PhoneSettingsCheckerPlatform.instance = fakePlatform;
 
     expect(await phoneSettingsCheckerPlugin.isAutoTimeEnabled(), isTrue);
@@ -51,7 +54,8 @@ void main() {
 
   test('isAutoTimeZoneEnabled returns the platform answer', () async {
     PhoneSettingsChecker phoneSettingsCheckerPlugin = PhoneSettingsChecker();
-    MockPhoneSettingsCheckerPlatform fakePlatform = MockPhoneSettingsCheckerPlatform();
+    MockPhoneSettingsCheckerPlatform fakePlatform =
+        MockPhoneSettingsCheckerPlatform();
     PhoneSettingsCheckerPlatform.instance = fakePlatform;
 
     expect(await phoneSettingsCheckerPlugin.isAutoTimeZoneEnabled(), isTrue);
@@ -59,15 +63,20 @@ void main() {
 
   test('isDeveloperOptionsEnabled returns the platform answer', () async {
     PhoneSettingsChecker phoneSettingsCheckerPlugin = PhoneSettingsChecker();
-    MockPhoneSettingsCheckerPlatform fakePlatform = MockPhoneSettingsCheckerPlatform();
+    MockPhoneSettingsCheckerPlatform fakePlatform =
+        MockPhoneSettingsCheckerPlatform();
     PhoneSettingsCheckerPlatform.instance = fakePlatform;
 
-    expect(await phoneSettingsCheckerPlugin.isDeveloperOptionsEnabled(), isTrue);
+    expect(
+      await phoneSettingsCheckerPlugin.isDeveloperOptionsEnabled(),
+      isTrue,
+    );
   });
 
   test('isUsbDebuggingEnabled returns the platform answer', () async {
     PhoneSettingsChecker phoneSettingsCheckerPlugin = PhoneSettingsChecker();
-    MockPhoneSettingsCheckerPlatform fakePlatform = MockPhoneSettingsCheckerPlatform();
+    MockPhoneSettingsCheckerPlatform fakePlatform =
+        MockPhoneSettingsCheckerPlatform();
     PhoneSettingsCheckerPlatform.instance = fakePlatform;
 
     expect(await phoneSettingsCheckerPlugin.isUsbDebuggingEnabled(), isTrue);
@@ -75,7 +84,8 @@ void main() {
 
   test('isAirplaneModeEnabled returns the platform answer', () async {
     PhoneSettingsChecker phoneSettingsCheckerPlugin = PhoneSettingsChecker();
-    MockPhoneSettingsCheckerPlatform fakePlatform = MockPhoneSettingsCheckerPlatform();
+    MockPhoneSettingsCheckerPlatform fakePlatform =
+        MockPhoneSettingsCheckerPlatform();
     PhoneSettingsCheckerPlatform.instance = fakePlatform;
 
     expect(await phoneSettingsCheckerPlugin.isAirplaneModeEnabled(), isTrue);
@@ -83,7 +93,8 @@ void main() {
 
   test('getAll returns the platform answer', () async {
     PhoneSettingsChecker phoneSettingsCheckerPlugin = PhoneSettingsChecker();
-    MockPhoneSettingsCheckerPlatform fakePlatform = MockPhoneSettingsCheckerPlatform();
+    MockPhoneSettingsCheckerPlatform fakePlatform =
+        MockPhoneSettingsCheckerPlatform();
     PhoneSettingsCheckerPlatform.instance = fakePlatform;
 
     final settings = await phoneSettingsCheckerPlugin.getAll();
